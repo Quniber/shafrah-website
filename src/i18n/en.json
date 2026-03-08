@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getQuote": "Get a Quote"
+  },
+  "hero": {
+    "headline": "Transforming Ideas Into Digital Excellence",
+    "subheadline": "We build custom websites, mobile apps, and software solutions that drive your business forward. From concept to launch, we're your trusted technology partner.",
+    "cta1": "Start Your Project",
+    "cta2": "View Our Services"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "What We Do",
+    "intro": "From stunning websites to powerful mobile apps and custom software solutions, we deliver end-to-end digital services that help your business grow.",
+    "web": {
+      "title": "Web Development",
+      "short": "Modern, responsive websites that captivate your audience and convert visitors into customers.",
+      "description": "Your website is your digital storefront. We create modern, responsive websites that not only look stunning but also perform exceptionally. Using the latest technologies like React, Next.js, and Vue.js, we build fast, secure, and scalable web solutions.",
+      "features": ["Responsive design for all devices", "SEO-optimized structure", "Fast loading speeds", "Secure and scalable architecture", "Content management systems", "E-commerce functionality"]
+    },
+    "mobile": {
+      "title": "Mobile App Development",
+      "short": "Native and cross-platform mobile apps for iOS and Android that users love.",
+      "description": "Put your business in your customers' pockets. We develop native and cross-platform mobile applications for iOS and Android that users love. Using Flutter, React Native, Swift, and Kotlin, we create apps that are fast, beautiful, and intuitive.",
+      "features": ["Native iOS development (Swift)", "Native Android development (Kotlin)", "Cross-platform apps (Flutter, React Native)", "UI/UX design for mobile", "App Store optimization", "Push notifications & analytics"]
+    },
+    "software": {
+      "title": "Software Solutions",
+      "short": "Custom software systems tailored to streamline your operations and boost efficiency.",
+      "description": "Every business is unique, and sometimes off-the-shelf software just doesn't cut it. We build custom software solutions tailored to your specific workflows, processes, and requirements.",
+      "features": ["Custom business applications", "Enterprise systems (ERP, CRM)", "Database design & management", "API development & integration", "Legacy system modernization", "Cloud-based solutions"]
+    },
+    "design": {
+      "title": "UI/UX Design",
+      "short": "Beautiful, intuitive interfaces that provide exceptional user experiences.",
+      "description": "Great design is invisible – it just works. Our design team creates intuitive, beautiful interfaces that users love to interact with. We focus on user experience first, ensuring every click, swipe, and interaction feels natural and effortless.",
+      "features": ["User research & analysis", "Wireframing & prototyping", "Visual design & branding", "Responsive design systems", "Usability testing", "Design handoff to development"]
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "step1": { "title": "Discovery", "description": "We start by understanding your business, goals, and requirements through detailed consultations." },
+    "step2": { "title": "Planning", "description": "We create a detailed project roadmap, timeline, and technical specifications." },
+    "step3": { "title": "Design", "description": "Our designers craft beautiful, user-centered interfaces that bring your vision to life." },
+    "step4": { "title": "Development", "description": "Our developers build your solution using clean code and industry best practices." },
+    "step5": { "title": "Testing", "description": "Rigorous quality assurance ensures your product is bug-free and performs flawlessly." },
+    "step6": { "title": "Launch & Support", "description": "We launch your product and provide ongoing support to ensure continued success." }
+  },
+  "stats": {
+    "years": "Years of Excellence",
+    "team": "Team Members",
+    "technologies": "Technologies Mastered",
+    "satisfaction": "Client Satisfaction"
+  },
+  "whyUs": {
+    "title": "Why Choose Us",
+    "quality": { "title": "Quality First", "description": "We don't compromise on quality. Every line of code is crafted with precision and attention to detail." },
+    "fast": { "title": "Fast Delivery", "description": "We understand time is valuable. Our agile process ensures your project launches on schedule." },
+    "custom": { "title": "Custom Solutions", "description": "No templates, no shortcuts. Every solution is built specifically for your unique needs." },
+    "support": { "title": "Full Support", "description": "Our partnership doesn't end at launch. We provide ongoing support and maintenance." }
+  },
+  "about": {
+    "title": "About Shafrah",
+    "story": "Founded in 2024 in Qatar, Shafrah emerged from a simple vision: to bridge the gap between innovative ideas and exceptional digital products.\n\nOur name, 'Shafrah' (شفرة), means 'code' in Arabic – representing our commitment to crafting clean, efficient, and powerful digital solutions. We believe that great technology should be accessible to every business, regardless of size or industry.\n\nWith a team of 10+ passionate developers, designers, and strategists, we've built a company culture centered on excellence, innovation, and genuine partnership with our clients. We don't just build software; we build relationships and deliver solutions that truly make a difference.\n\nToday, we serve businesses across Qatar and beyond, helping them transform their digital presence and achieve their goals through cutting-edge technology.",
+    "vision": {
+      "title": "Our Vision",
+      "description": "To be Qatar's most trusted technology partner, known for delivering innovative solutions that empower businesses to thrive in the digital age."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To transform business ideas into powerful digital solutions through exceptional craftsmanship, cutting-edge technology, and dedicated partnership."
+    },
+    "values": {
+      "title": "Our Values",
+      "excellence": { "title": "Excellence", "description": "We hold ourselves to the highest standards. Good enough is never good enough." },
+      "innovation": { "title": "Innovation", "description": "We stay ahead of technology trends to deliver modern, future-proof solutions." },
+      "integrity": { "title": "Integrity", "description": "We build trust through transparency, honest communication, and delivering on our promises." },
+      "partnership": { "title": "Partnership", "description": "Your success is our success. We work alongside you as an extension of your team." }
+    }
+  },
+  "portfolio": {
+    "title": "Our Work",
+    "subtitle": "Portfolio",
+    "intro": "Every project tells a story. Here's a glimpse of the digital solutions we've crafted for our clients.",
+    "comingSoon": "Exciting projects coming soon. Check back to see our latest work!"
+  },
+  "blog": {
+    "title": "Insights & Resources",
+    "subtitle": "Blog",
+    "intro": "Stay updated with the latest trends in technology, development tips, and insights from our team.",
+    "comingSoon": "Blog posts coming soon. Stay tuned for valuable insights!"
+  },
+  "contact": {
+    "title": "Let's Build Something Amazing",
+    "intro": "Ready to start your project? We'd love to hear from you. Get in touch and let's discuss how we can help bring your ideas to life.",
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "hours": "Working Hours"
+    },
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully! We'll get back to you soon.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "footer": {
+    "tagline": "Building digital excellence, one project at a time.",
+    "quickLinks": "Quick Links",
+    "contactUs": "Contact Us",
+    "copyright": "© 2024 Shafrah. All rights reserved."
+  }
+}

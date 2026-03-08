@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Left curly brace { -->
+  <path d="M25 20 Q15 20 15 30 L15 42 Q15 50 8 50 Q15 50 15 58 L15 70 Q15 80 25 80"
+        fill="none" stroke="#1a6a9a" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Right curly brace } -->
+  <path d="M75 20 Q85 20 85 30 L85 42 Q85 50 92 50 Q85 50 85 58 L85 70 Q85 80 75 80"
+        fill="none" stroke="#1a6a9a" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Left angle bracket < -->
+  <path d="M38 35 L28 50 L38 65"
+        fill="none" stroke="#f5a623" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Slash / -->
+  <path d="M45 65 L55 35"
+        fill="none" stroke="#1a3a4a" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Right angle bracket > -->
+  <path d="M62 35 L72 50 L62 65"
+        fill="none" stroke="#f5a623" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

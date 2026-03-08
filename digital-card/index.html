@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rashid Abdulla Alhajri | Shafrah Tech</title>
+    <meta name="description" content="CEO & Founder of Shafrah Tech - Digital Business Card">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Rashid Abdulla Alhajri">
+    <meta property="og:description" content="CEO & Founder of Shafrah Tech">
+    <meta property="og:url" content="https://www.shafrah.qa">
+    <meta property="og:type" content="profile">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Floating background elements */
+        .bg-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { top: 20%; right: 10%; animation-delay: 2s; }
+        .shape:nth-child(3) { top: 60%; left: 5%; animation-delay: 4s; }
+        .shape:nth-child(4) { top: 80%; right: 15%; animation-delay: 6s; }
+        .shape:nth-child(5) { top: 40%; left: 80%; animation-delay: 8s; }
+        .shape:nth-child(6) { top: 5%; left: 50%; animation-delay: 10s; }
+        .shape:nth-child(7) { top: 90%; left: 40%; animation-delay: 12s; }
+        .shape:nth-child(8) { top: 30%; left: 20%; animation-delay: 14s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(0) rotate(0deg); }
+            75% { transform: translateY(20px) rotate(-5deg); }
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 420px;
+            animation: slideUp 0.8s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            font-weight: 700;
+            box-shadow: 0 15px 50px rgba(99, 102, 241, 0.3);
+            border: 5px solid #ffffff;
+            overflow: hidden;
+            animation: pulse 3s infinite ease-in-out, slideUp 0.8s ease-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 15px 50px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 20px 60px rgba(99, 102, 241, 0.5); }
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+        }
+
+        .profile-name {
+            color: #1f2937;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            animation: slideUp 0.8s ease-out 0.1s both;
+        }
+
+        .profile-title {
+            color: #6366f1;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        .profile-company {
+            color: #6b7280;
+            font-size: 14px;
+            animation: slideUp 0.8s ease-out 0.3s both;
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 20px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            color: #1f2937;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: slideUp 0.8s ease-out both;
+        }
+
+        .link-button:nth-child(1) { animation-delay: 0.4s; }
+        .link-button:nth-child(2) { animation-delay: 0.5s; }
+        .link-button:nth-child(3) { animation-delay: 0.6s; }
+        .link-button:nth-child(4) { animation-delay: 0.7s; }
+        .link-button:nth-child(5) { animation-delay: 0.8s; }
+        .link-button:nth-child(6) { animation-delay: 0.9s; }
+
+        .link-button:hover {
+            background: #ffffff;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #6366f1;
+        }
+
+        .link-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .link-icon {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 22px;
+        }
+
+        .link-icon.website { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+        .link-icon.email { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); }
+        .link-icon.phone { background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); }
+        .link-icon.whatsapp { background: linear-gradient(135deg, #10b981 0%, #22c55e 100%); }
+        .link-icon.location { background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%); }
+        .link-icon.download { background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%); }
+
+        .link-content {
+            flex: 1;
+        }
+
+        .link-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            color: #1f2937;
+        }
+
+        .link-subtitle {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .link-arrow {
+            color: #d1d5db;
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .link-button:hover .link-arrow {
+            transform: translateX(5px);
+            color: #6366f1;
+        }
+
+        .download-vcard {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            border: none;
+            justify-content: center;
+            font-weight: 600;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        .download-vcard:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.4);
+        }
+
+        .download-vcard .link-title,
+        .download-vcard .link-subtitle {
+            color: #ffffff;
+        }
+
+        .download-vcard .link-arrow {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #9ca3af;
+            font-size: 12px;
+            animation: slideUp 0.8s ease-out 1.1s both;
+        }
+
+        .footer a {
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .qr-section {
+            margin-top: 25px;
+            text-align: center;
+            animation: slideUp 0.8s ease-out 1s both;
+        }
+
+        .qr-toggle {
+            background: #ffffff;
+            border: 2px solid #e5e7eb;
+            color: #6b7280;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .qr-toggle:hover {
+            background: #6366f1;
+            border-color: #6366f1;
+            color: #ffffff;
+            transform: scale(1.05);
+        }
+
+        .qr-code {
+            display: none;
+            margin-top: 20px;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 20px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e5e7eb;
+        }
+
+        .qr-code.show {
+            display: block;
+            animation: scaleIn 0.4s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating background emojis -->
+    <div class="bg-shapes">
+        <span class="shape">💼</span>
+        <span class="shape">🚀</span>
+        <span class="shape">💡</span>
+        <span class="shape">⭐</span>
+        <span class="shape">🌟</span>
+        <span class="shape">💎</span>
+        <span class="shape">🎯</span>
+        <span class="shape">✨</span>
+    </div>
+
+    <div class="card-container">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="rashid.jpg" alt="Rashid Abdulla Alhajri">
+            </div>
+            <h1 class="profile-name">Rashid Abdulla Alhajri</h1>
+            <p class="profile-title">CEO & Founder 🚀</p>
+            <p class="profile-company">Shafrah Tech</p>
+        </div>
+
+        <div class="links-container">
+            <a href="https://www.shafrah.qa" target="_blank" class="link-button">
+                <div class="link-icon website">🌐</div>
+                <div class="link-content">
+                    <div class="link-title">Website</div>
+                    <div class="link-subtitle">www.shafrah.qa</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="mailto:rashid@shafrah.qa" class="link-button">
+                <div class="link-icon email">📧</div>
+                <div class="link-content">
+                    <div class="link-title">Email</div>
+                    <div class="link-subtitle">rashid@shafrah.qa</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="tel:+97450002048" class="link-button">
+                <div class="link-icon phone">📱</div>
+                <div class="link-content">
+                    <div class="link-title">Phone</div>
+                    <div class="link-subtitle">+974 5000 2048</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://wa.me/97450002048" target="_blank" class="link-button">
+                <div class="link-icon whatsapp">💬</div>
+                <div class="link-content">
+                    <div class="link-title">WhatsApp</div>
+                    <div class="link-subtitle">Send a message</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <a href="https://maps.google.com/?q=Alrayyan+Alshafi+Road+Building+9+Qatar" target="_blank" class="link-button">
+                <div class="link-icon location">📍</div>
+                <div class="link-content">
+                    <div class="link-title">Location</div>
+                    <div class="link-subtitle">Alrayyan, Qatar</div>
+                </div>
+                <span class="link-arrow">→</span>
+            </a>
+
+            <button class="link-button download-vcard" onclick="downloadVCard()">
+                <div class="link-icon download">💾</div>
+                <div class="link-content">
+                    <div class="link-title">Save Contact</div>
+                    <div class="link-subtitle">Download vCard</div>
+                </div>
+            </button>
+        </div>
+
+        <div class="qr-section">
+            <button class="qr-toggle" onclick="toggleQR()">📷 Show QR Code</button>
+            <div class="qr-code" id="qrCode">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.shafrah.qa/card" alt="QR Code">
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Made with ❤️ by <a href="https://www.shafrah.qa">Shafrah Tech</a></p>
+        </div>
+    </div>
+
+    <script>
+        function downloadVCard() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+N:Alhajri;Rashid;Abdulla;;
+FN:Rashid Abdulla Alhajri
+ORG:Shafrah Tech
+TITLE:CEO - Founder
+TEL;TYPE=CELL:+974 5000 2048
+EMAIL;TYPE=WORK:rashid@shafrah.qa
+URL:https://www.shafrah.qa
+ADR;TYPE=WORK:;;Alshafi Road, Building 9, Floor 2, Office 22;Alrayyan;;00974;Qatar
+END:VCARD`;
+
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Rashid-Alhajri.vcf';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        function toggleQR() {
+            const qr = document.getElementById('qrCode');
+            const btn = document.querySelector('.qr-toggle');
+            qr.classList.toggle('show');
+            btn.textContent = qr.classList.contains('show') ? '📷 Hide QR Code' : '📷 Show QR Code';
+        }
+    </script>
+</body>
+</html>
