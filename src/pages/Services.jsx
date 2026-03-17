@@ -1,12 +1,57 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'framer-motion';
-import { Globe, Smartphone, Code, Palette, Search, FileText, PenTool, Settings, TestTube, Rocket, Check, ArrowRight, ArrowLeft } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Globe, Smartphone, Code, Palette, Search, FileText, PenTool, Settings, TestTube, Rocket, Check, ArrowRight, ArrowLeft, ChevronDown, HelpCircle } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 
 const Services = () => {
   const { t } = useTranslation();
   const { isRTL } = useLanguage();
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
+  const [openFAQ, setOpenFAQ] = useState(null);
+
+  const toggleFAQ = (index) => {
+    setOpenFAQ(openFAQ === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      q: isRTL ? 'كم يستغرق بناء موقع إلكتروني أو تطبيق؟' : 'How long does it take to build a website or app?',
+      a: isRTL
+        ? 'يعتمد الجدول الزمني على مدى تعقيد المشروع. عادةً، يستغرق الموقع الإلكتروني من 4 إلى 8 أسابيع، بينما قد يستغرق التطبيق من 8 إلى 16 أسبوعاً. نقدم جدولاً زمنياً مفصلاً بعد مرحلة الاكتشاف.'
+        : 'Timelines depend on project complexity. Typically, a website takes 4-8 weeks, while a mobile app may take 8-16 weeks. We provide a detailed timeline after the discovery phase.',
+    },
+    {
+      q: isRTL ? 'ما هي التقنيات التي تستخدمونها؟' : 'What technologies do you use?',
+      a: isRTL
+        ? 'نستخدم أحدث التقنيات مثل React و Next.js و Flutter و React Native و Node.js و Python. نختار التقنية الأنسب بناءً على متطلبات مشروعك لضمان أفضل أداء وقابلية للتوسع.'
+        : 'We use modern technologies like React, Next.js, Flutter, React Native, Node.js, and Python. We choose the best-fit technology based on your project requirements to ensure optimal performance and scalability.',
+    },
+    {
+      q: isRTL ? 'هل تقدمون دعماً فنياً مستمراً بعد الإطلاق؟' : 'Do you provide ongoing support after launch?',
+      a: isRTL
+        ? 'نعم، نقدم حزم دعم وصيانة مستمرة تشمل مراقبة الأداء وتحديثات الأمان وإصلاح الأخطاء وإضافة ميزات جديدة. نضمن أن يظل مشروعك يعمل بسلاسة وكفاءة.'
+        : 'Yes, we offer ongoing support and maintenance packages that include performance monitoring, security updates, bug fixes, and feature additions. We ensure your project stays running smoothly and efficiently.',
+    },
+    {
+      q: isRTL ? 'كم تكلفة المشروع؟' : 'How much does a project cost?',
+      a: isRTL
+        ? 'تختلف التكلفة حسب نطاق المشروع ومتطلباته. نقدم استشارة مجانية لفهم احتياجاتك وتقديم عرض سعر مفصل وشفاف. نحرص على تقديم قيمة ممتازة مقابل استثمارك.'
+        : 'Costs vary based on project scope and requirements. We offer a free consultation to understand your needs and provide a detailed, transparent quote. We focus on delivering excellent value for your investment.',
+    },
+    {
+      q: isRTL ? 'هل تعملون مع الشركات الناشئة؟' : 'Do you work with startups?',
+      a: isRTL
+        ? 'بالتأكيد! نحب العمل مع الشركات الناشئة ونقدم حلولاً مرنة تناسب ميزانياتها. لدينا خبرة في بناء منتجات MVP وتوسيعها مع نمو الأعمال. نفهم تحديات الشركات الناشئة ونقدم شراكة حقيقية.'
+        : 'Absolutely! We love working with startups and offer flexible solutions that fit their budgets. We have experience building MVPs and scaling them as the business grows. We understand startup challenges and provide a true partnership.',
+    },
+    {
+      q: isRTL ? 'هل يمكنكم إعادة تصميم موقع أو تطبيق موجود؟' : 'Can you redesign an existing website or app?',
+      a: isRTL
+        ? 'نعم، نقدم خدمات إعادة التصميم والتطوير للمواقع والتطبيقات الحالية. نحلل مشروعك الحالي ونقدم توصيات لتحسين تجربة المستخدم والأداء والتصميم مع الحفاظ على ما يعمل بشكل جيد.'
+        : 'Yes, we offer redesign and redevelopment services for existing websites and apps. We analyze your current project and provide recommendations to improve UX, performance, and design while preserving what works well.',
+    },
+  ];
 
   const services = [
     {
@@ -393,6 +438,139 @@ const Services = () => {
                 }}>
                   {t(`process.${step.key}.description`)}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section style={{
+        padding: '100px 0',
+        position: 'relative'
+      }}>
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            style={{ textAlign: 'center', marginBottom: '60px' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 20px',
+                background: 'rgba(96, 165, 250, 0.1)',
+                border: '1px solid rgba(96, 165, 250, 0.3)',
+                borderRadius: '50px',
+                marginBottom: '24px',
+                flexDirection: isRTL ? 'row-reverse' : 'row'
+              }}
+            >
+              <HelpCircle size={16} style={{ color: '#60a5fa' }} />
+              <span style={{ color: '#60a5fa', fontSize: '0.9rem', fontWeight: 500 }}>
+                {isRTL ? 'أسئلة شائعة' : 'FAQ'}
+              </span>
+            </motion.div>
+
+            <h2 style={{
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              fontWeight: 800,
+              color: 'white',
+              marginBottom: '16px'
+            }}>
+              <span style={{ color: '#f5a623' }}>{'// '}</span>
+              {isRTL ? 'الأسئلة الشائعة' : 'Frequently Asked Questions'}
+            </h2>
+            <p style={{
+              color: 'rgba(255,255,255,0.6)',
+              fontSize: '1.1rem',
+              maxWidth: '600px',
+              margin: '0 auto'
+            }}>
+              {isRTL ? 'إجابات على الأسئلة الأكثر شيوعاً حول خدماتنا' : 'Answers to the most common questions about our services'}
+            </p>
+          </motion.div>
+
+          <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.08 }}
+                style={{
+                  background: openFAQ === index ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.03)',
+                  border: openFAQ === index ? '1px solid rgba(96, 165, 250, 0.3)' : '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: '16px',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  style={{
+                    width: '100%',
+                    padding: '24px 28px',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '16px',
+                    textAlign: isRTL ? 'right' : 'left',
+                    flexDirection: isRTL ? 'row-reverse' : 'row'
+                  }}
+                >
+                  <span style={{
+                    color: openFAQ === index ? '#60a5fa' : 'white',
+                    fontSize: '1.05rem',
+                    fontWeight: 600,
+                    transition: 'color 0.3s ease',
+                    lineHeight: 1.5
+                  }}>
+                    {faq.q}
+                  </span>
+                  <motion.div
+                    animate={{ rotate: openFAQ === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ flexShrink: 0 }}
+                  >
+                    <ChevronDown size={20} style={{ color: openFAQ === index ? '#60a5fa' : 'rgba(255,255,255,0.4)' }} />
+                  </motion.div>
+                </button>
+
+                <AnimatePresence>
+                  {openFAQ === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <p style={{
+                        padding: '0 28px 24px',
+                        color: 'rgba(255,255,255,0.6)',
+                        fontSize: '0.95rem',
+                        lineHeight: 1.8,
+                        margin: 0,
+                        textAlign: isRTL ? 'right' : 'left'
+                      }}>
+                        {faq.a}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </motion.div>
             ))}
           </div>

@@ -11,8 +11,8 @@ const PORT = process.env.PORT || 4091;
 
 // Middleware
 app.use(cors({
-  origin: ['https://shafrah.qa', 'http://localhost:5173'],
-  methods: ['POST', 'GET'],
+  origin: ['https://shafrah.qa', 'http://localhost:5173', 'http://localhost:5174'],
+  methods: ['POST', 'GET', 'OPTIONS'],
   credentials: true
 }));
 app.use(express.json());

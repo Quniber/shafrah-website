@@ -19,7 +19,7 @@ const Footer = () => {
 
   const contactItems = [
     { icon: Mail, value: 'info@shafrah.qa', href: 'mailto:info@shafrah.qa' },
-    { icon: Phone, value: '+974 5000 1403', href: 'tel:+97450001403' },
+    { icon: Phone, value: '+974 5000 2048', href: 'tel:+97450002048' },
     { icon: MapPin, value: 'Al Rayyan, Doha, Qatar', href: null },
     { icon: Clock, value: isRTL ? 'الأحد - الخميس، 09:00 - 16:00' : 'Sun - Thu, 09:00 - 16:00', href: null },
   ];
@@ -329,7 +329,7 @@ const Footer = () => {
                       onMouseOver={(e) => e.currentTarget.style.color = '#f5a623'}
                       onMouseOut={(e) => e.currentTarget.style.color = 'rgba(255,255,255,0.6)'}
                     >
-                      {item.value}
+                      <span dir="ltr">{item.value}</span>
                     </a>
                   ) : (
                     <span style={{

@@ -5,6 +5,7 @@
     <loc>https://shafrah.qa/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://shafrah.qa/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://shafrah.qa/?lang=ar"/>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -19,6 +20,7 @@
     <loc>https://shafrah.qa/services</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://shafrah.qa/services"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://shafrah.qa/services?lang=ar"/>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -26,6 +28,7 @@
     <loc>https://shafrah.qa/portfolio</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://shafrah.qa/portfolio"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://shafrah.qa/portfolio?lang=ar"/>
+    <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

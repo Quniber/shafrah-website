@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, Globe, Smartphone, Code, Palette, Award, Zap, Settings, HeadphonesIcon } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Globe, Smartphone, Code, Palette, Award, Zap, Settings, HeadphonesIcon, Star, Quote } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
 
 const Home = () => {
@@ -29,6 +29,33 @@ const Home = () => {
     { icon: Zap, key: 'fast' },
     { icon: Settings, key: 'custom' },
     { icon: HeadphonesIcon, key: 'support' },
+  ];
+
+  const testimonials = [
+    {
+      nameEN: 'Ahmed Al-Thani',
+      nameAR: 'أحمد آل ثاني',
+      roleEN: 'CEO, TechVentures',
+      roleAR: 'مدير تنفيذي، تك فينتشرز',
+      quoteEN: 'Shafrah transformed our business idea into a powerful mobile application. Their team\'s technical expertise and commitment to quality exceeded our expectations.',
+      quoteAR: 'شفرة حوّلت فكرة مشروعنا إلى تطبيق جوال قوي. خبرة فريقهم التقنية والتزامهم بالجودة فاق توقعاتنا.',
+    },
+    {
+      nameEN: 'Sara Al-Mansouri',
+      nameAR: 'سارة المنصوري',
+      roleEN: 'Marketing Director, QatarShop',
+      roleAR: 'مديرة تسويق، قطر شوب',
+      quoteEN: 'Working with Shafrah was a game-changer. They delivered our e-commerce platform on time with exceptional design and performance.',
+      quoteAR: 'العمل مع شفرة كان نقلة نوعية. سلّموا منصة التجارة الإلكترونية في الوقت المحدد بتصميم وأداء استثنائي.',
+    },
+    {
+      nameEN: 'Mohammed Al-Kuwari',
+      nameAR: 'محمد الكواري',
+      roleEN: 'Founder, Daleel App',
+      roleAR: 'مؤسس، تطبيق دليل',
+      quoteEN: 'From concept to launch, Shafrah guided us through every step. Their attention to detail and user experience expertise made our app stand out.',
+      quoteAR: 'من الفكرة إلى الإطلاق، شفرة رافقتنا في كل خطوة. اهتمامهم بالتفاصيل وخبرتهم في تجربة المستخدم جعلت تطبيقنا يتميز.',
+    },
   ];
 
   // Floating code snippets for background
@@ -477,6 +504,120 @@ const Home = () => {
                 <p style={{ color: '#6b7280', fontSize: '0.95rem', lineHeight: 1.7 }}>
                   {t(`whyUs.${item.key}.description`)}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="section" style={{ background: '#ffffff', textAlign: isRTL ? 'right' : 'left' }}>
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="section-header"
+            style={{ textAlign: 'center', marginBottom: '48px' }}
+          >
+            <h2 className="heading-2" style={{ color: '#1a3a4a', marginBottom: '16px' }}>
+              {isRTL ? 'ماذا يقول عملاؤنا' : 'What Our Clients Say'}
+            </h2>
+            <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>
+              {isRTL ? 'آراء عملائنا تتحدث عن جودة عملنا' : 'Our clients\' feedback speaks to the quality of our work'}
+            </p>
+          </motion.div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '32px',
+          }}>
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+                style={{
+                  background: '#f8fafc',
+                  borderRadius: '16px',
+                  padding: '32px',
+                  position: 'relative',
+                  boxShadow: '0 4px 24px rgba(0, 0, 0, 0.06)',
+                  border: '1px solid #e2e8f0',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                }}
+                whileHover={{
+                  y: -6,
+                  boxShadow: '0 12px 40px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                {/* Quote icon */}
+                <div style={{
+                  position: 'absolute',
+                  top: '20px',
+                  [isRTL ? 'left' : 'right']: '24px',
+                  opacity: 0.1,
+                }}>
+                  <Quote size={48} color="#1a6a9a" />
+                </div>
+
+                {/* Star rating */}
+                <div style={{
+                  display: 'flex',
+                  gap: '4px',
+                  marginBottom: '20px',
+                  flexDirection: isRTL ? 'row-reverse' : 'row',
+                }}>
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={18} fill="#f5a623" color="#f5a623" />
+                  ))}
+                </div>
+
+                {/* Quote text */}
+                <p style={{
+                  color: '#374151',
+                  fontSize: '1rem',
+                  lineHeight: 1.8,
+                  marginBottom: '24px',
+                  fontStyle: 'italic',
+                  minHeight: '100px',
+                }}>
+                  "{isRTL ? testimonial.quoteAR : testimonial.quoteEN}"
+                </p>
+
+                {/* Divider */}
+                <div style={{
+                  width: '40px',
+                  height: '3px',
+                  background: 'linear-gradient(135deg, #1a6a9a, #f5a623)',
+                  borderRadius: '2px',
+                  marginBottom: '16px',
+                  marginLeft: isRTL ? 'auto' : '0',
+                  marginRight: isRTL ? '0' : 'auto',
+                }} />
+
+                {/* Client info */}
+                <div>
+                  <h4 style={{
+                    fontSize: '1.1rem',
+                    fontWeight: 700,
+                    color: '#1a3a4a',
+                    marginBottom: '4px',
+                  }}>
+                    {isRTL ? testimonial.nameAR : testimonial.nameEN}
+                  </h4>
+                  <p style={{
+                    color: '#1a6a9a',
+                    fontSize: '0.9rem',
+                    fontWeight: 500,
+                  }}>
+                    {isRTL ? testimonial.roleAR : testimonial.roleEN}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>

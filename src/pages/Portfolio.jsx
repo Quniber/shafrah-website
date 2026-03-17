@@ -1,17 +1,14 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Briefcase, Code, Rocket, Clock } from 'lucide-react';
+import { Briefcase, Check, Smartphone } from 'lucide-react';
 import { useLanguage } from '../hooks/useLanguage';
+import { projects } from '../data/projects';
 
 const Portfolio = () => {
   const { t } = useTranslation();
-  const { isRTL } = useLanguage();
+  const { isRTL, currentLanguage } = useLanguage();
 
   const codeSnippets = ['projects[]', 'portfolio.map()', 'showcase()', 'render()'];
-
-  const categories = isRTL
-    ? ['تطبيقات الويب', 'تطبيقات الجوال', 'برمجيات مخصصة', 'تصميم UI/UX']
-    : ['Web Apps', 'Mobile Apps', 'Custom Software', 'UI/UX Design'];
 
   return (
     <div style={{ background: '#0f172a', minHeight: '100vh', direction: isRTL ? 'rtl' : 'ltr', textAlign: isRTL ? 'right' : 'left' }}>
@@ -125,146 +122,207 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Coming Soon Section */}
-      <section style={{ padding: '60px 0 120px' }}>
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            style={{
-              background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%)',
-              border: '1px solid rgba(255,255,255,0.1)',
-              borderRadius: '32px',
-              padding: '80px 40px',
-              textAlign: 'center',
-              position: 'relative',
-              overflow: 'hidden'
-            }}
-          >
-            {/* Grid pattern */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                               linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }} />
-
-            {/* Glowing orbs */}
-            <div style={{
-              position: 'absolute',
-              top: '-100px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '400px',
-              height: '400px',
-              background: 'radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%)',
-              filter: 'blur(60px)'
-            }} />
-
-            <div style={{ position: 'relative', zIndex: 10 }}>
-              {/* Animated Icon Container */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                style={{
-                  width: '120px',
-                  height: '120px',
-                  background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(245, 166, 35, 0.2) 100%)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderRadius: '32px',
+      {/* Projects Section */}
+      <section style={{ padding: '20px 0 120px' }}>
+        <div className="container-custom" style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              style={{
+                background: 'rgba(255,255,255,0.03)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '24px',
+                overflow: 'hidden',
+                transition: 'border-color 0.3s',
+              }}
+            >
+              {/* Project Header with Logo */}
+              <div style={{
+                padding: '40px 36px 0',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '20px',
+                flexDirection: isRTL ? 'row-reverse' : 'row'
+              }}>
+                <div style={{
+                  width: '72px',
+                  height: '72px',
+                  borderRadius: '18px',
+                  overflow: 'hidden',
+                  background: project.id === 'beauty-porter' ? '#fff' : project.color,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 32px'
-                }}
-              >
-                <Rocket size={48} style={{ color: '#a855f7' }} />
-              </motion.div>
-
-              {/* Code-style coming soon text */}
-              <div style={{
-                display: 'inline-block',
-                background: 'rgba(15, 23, 42, 0.8)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderRadius: '12px',
-                padding: '20px 32px',
-                marginBottom: '24px',
-                fontFamily: 'monospace',
-                direction: 'ltr',
-                textAlign: 'left'
-              }}>
-                <div style={{ fontSize: '0.9rem', lineHeight: 1.8 }}>
-                  <span style={{ color: '#a855f7' }}>const</span>{' '}
-                  <span style={{ color: '#60a5fa' }}>portfolio</span>{' '}
-                  <span style={{ color: 'white' }}>=</span>{' '}
-                  <span style={{ color: '#f5a623' }}>{'{'}</span>
-                </div>
-                <div style={{ paddingLeft: '20px', fontSize: '0.9rem', lineHeight: 1.8 }}>
-                  <span style={{ color: '#60a5fa' }}>status</span>:{' '}
-                  <span style={{ color: '#22c55e' }}>"loading..."</span>,
-                </div>
-                <div style={{ paddingLeft: '20px', fontSize: '0.9rem', lineHeight: 1.8 }}>
-                  <span style={{ color: '#60a5fa' }}>projects</span>:{' '}
-                  <span style={{ color: '#f5a623' }}>[]</span>
-                </div>
-                <div style={{ fontSize: '0.9rem', lineHeight: 1.8 }}>
-                  <span style={{ color: '#f5a623' }}>{'}'}</span>;
-                </div>
-              </div>
-
-              <h2 style={{
-                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
-                fontWeight: 700,
-                color: 'white',
-                marginBottom: '16px'
-              }}>
-                {t('portfolio.comingSoon')}
-              </h2>
-
-              <p style={{
-                color: 'rgba(255,255,255,0.6)',
-                fontSize: '1.1rem',
-                maxWidth: '500px',
-                margin: '0 auto 32px',
-                lineHeight: 1.7
-              }}>
-                {isRTL
-                  ? 'نعمل حالياً على بناء مشاريع مذهلة. عد قريباً لرؤية أحدث أعمالنا!'
-                  : "We're currently building amazing projects. Check back soon to see our latest work!"}
-              </p>
-
-              {/* Feature badges */}
-              <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '12px',
-                justifyContent: 'center',
-                flexDirection: isRTL ? 'row-reverse' : 'row'
-              }}>
-                {categories.map((item, index) => (
-                  <motion.span
-                    key={item}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
+                  flexShrink: 0,
+                  border: '1px solid rgba(255,255,255,0.1)'
+                }}>
+                  <img
+                    src={project.logo}
+                    alt={project.title[currentLanguage]}
                     style={{
-                      padding: '8px 16px',
-                      background: 'rgba(255,255,255,0.05)',
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      borderRadius: '8px',
-                      color: 'rgba(255,255,255,0.7)',
-                      fontSize: '0.9rem'
+                      width: project.id === 'beauty-porter' ? '60px' : '72px',
+                      height: project.id === 'beauty-porter' ? '60px' : '72px',
+                      objectFit: 'contain',
+                      borderRadius: project.id === 'beauty-porter' ? '0' : '18px'
                     }}
-                  >
-                    {item}
-                  </motion.span>
-                ))}
+                  />
+                </div>
+                <div style={{ flex: 1 }}>
+                  <h3 style={{
+                    fontSize: '1.6rem',
+                    fontWeight: 700,
+                    color: 'white',
+                    marginBottom: '6px'
+                  }}>
+                    {project.title[currentLanguage]}
+                  </h3>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    flexDirection: isRTL ? 'row-reverse' : 'row',
+                    flexWrap: 'wrap'
+                  }}>
+                    <span style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      fontSize: '0.85rem',
+                      color: '#a855f7',
+                      fontWeight: 500,
+                      flexDirection: isRTL ? 'row-reverse' : 'row'
+                    }}>
+                      <Smartphone size={14} />
+                      {isRTL ? 'تطبيق جوال' : 'Mobile App'}
+                    </span>
+                    <span style={{
+                      padding: '3px 10px',
+                      background: 'rgba(245, 166, 35, 0.15)',
+                      border: '1px solid rgba(245, 166, 35, 0.3)',
+                      borderRadius: '6px',
+                      color: '#f5a623',
+                      fontSize: '0.75rem',
+                      fontWeight: 600
+                    }}>
+                      {project.status[currentLanguage]}
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Description */}
+              <div style={{ padding: '24px 36px 0' }}>
+                <p style={{
+                  color: 'rgba(255,255,255,0.6)',
+                  fontSize: '1.05rem',
+                  lineHeight: 1.8
+                }}>
+                  {project.description[currentLanguage]}
+                </p>
+              </div>
+
+              {/* Features & Info Grid */}
+              <div style={{
+                padding: '24px 36px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+                gap: '24px'
+              }}>
+                {/* Features */}
+                <div>
+                  <h4 style={{
+                    color: 'white',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    marginBottom: '14px'
+                  }}>
+                    {isRTL ? 'المميزات' : 'Key Features'}
+                  </h4>
+                  <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                    {project.features[currentLanguage].map((feature, i) => (
+                      <li key={i} style={{
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: '10px',
+                        flexDirection: isRTL ? 'row-reverse' : 'row',
+                        color: 'rgba(255,255,255,0.55)',
+                        fontSize: '0.9rem',
+                        lineHeight: 1.5
+                      }}>
+                        <Check size={16} style={{ color: '#22c55e', flexShrink: 0, marginTop: '2px' }} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Platforms & Tech */}
+                <div>
+                  <h4 style={{
+                    color: 'white',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    marginBottom: '14px'
+                  }}>
+                    {isRTL ? 'المنصات' : 'Platforms'}
+                  </h4>
+                  <div style={{
+                    display: 'flex',
+                    gap: '8px',
+                    marginBottom: '24px',
+                    flexDirection: isRTL ? 'row-reverse' : 'row'
+                  }}>
+                    {project.platforms.map((platform) => (
+                      <span key={platform} style={{
+                        padding: '6px 16px',
+                        background: 'rgba(34, 197, 94, 0.1)',
+                        border: '1px solid rgba(34, 197, 94, 0.2)',
+                        borderRadius: '8px',
+                        color: '#4ade80',
+                        fontSize: '0.85rem',
+                        fontWeight: 500
+                      }}>
+                        {platform}
+                      </span>
+                    ))}
+                  </div>
+
+                  <h4 style={{
+                    color: 'white',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    marginBottom: '14px'
+                  }}>
+                    {isRTL ? 'التقنيات المستخدمة' : 'Technologies'}
+                  </h4>
+                  <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '8px',
+                    flexDirection: isRTL ? 'row-reverse' : 'row'
+                  }}>
+                    {project.technologies.map((tech) => (
+                      <span key={tech} style={{
+                        padding: '6px 14px',
+                        background: 'rgba(168, 85, 247, 0.1)',
+                        border: '1px solid rgba(168, 85, 247, 0.2)',
+                        borderRadius: '8px',
+                        color: '#c084fc',
+                        fontSize: '0.8rem',
+                        fontWeight: 500
+                      }}>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </section>
 

@@ -62,8 +62,8 @@ const Contact = () => {
     {
       icon: Phone,
       label: t('contact.info.phone'),
-      value: '+974 5000 1403',
-      href: 'tel:+97450001403',
+      value: '+974 5000 2048',
+      href: 'tel:+97450002048',
       color: '#60a5fa'
     },
     {
@@ -285,11 +285,11 @@ const Contact = () => {
                           onMouseOver={(e) => e.currentTarget.style.color = item.color}
                           onMouseOut={(e) => e.currentTarget.style.color = 'white'}
                         >
-                          {item.value}
+                          <span dir="ltr">{item.value}</span>
                         </a>
                       ) : (
                         <p style={{ color: 'white', fontSize: '1.05rem', fontWeight: 500 }}>
-                          {item.value}
+                          <span dir="ltr">{item.value}</span>
                         </p>
                       )}
                     </div>
