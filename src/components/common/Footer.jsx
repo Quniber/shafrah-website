@@ -368,6 +368,43 @@ const Footer = () => {
             <span>{isRTL ? 'صُنع بشغف' : 'Built with passion'}</span>
             <span style={{ color: '#60a5fa' }}>{'/>'}</span>
           </div>
+
+          {/* Legal Links */}
+          <div style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '8px 20px',
+            fontSize: '0.875rem'
+          }}>
+            <Link
+              to="/refund-policy"
+              style={{
+                color: 'rgba(255,255,255,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#f5a623')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
+            >
+              {t('footer.refundPolicy')}
+            </Link>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}>•</span>
+            <Link
+              to="/terms"
+              style={{
+                color: 'rgba(255,255,255,0.55)',
+                textDecoration: 'none',
+                transition: 'color 0.3s ease'
+              }}
+              onMouseOver={(e) => (e.currentTarget.style.color = '#f5a623')}
+              onMouseOut={(e) => (e.currentTarget.style.color = 'rgba(255,255,255,0.55)')}
+            >
+              {t('footer.terms')}
+            </Link>
+          </div>
+
           <p style={{
             color: 'rgba(255,255,255,0.4)',
             fontSize: '0.9rem',

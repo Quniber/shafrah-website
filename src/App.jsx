@@ -8,7 +8,9 @@ import Portfolio from './pages/Portfolio';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
-import EidOffer from './pages/EidOffer';
+import Start from './pages/EidOffer';
+import RefundPolicy from './pages/RefundPolicy';
+import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
 import './i18n';
 
@@ -33,7 +35,9 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/mshfr" element={<EidOffer />} />
+          <Route path="/start" element={<Start />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>
