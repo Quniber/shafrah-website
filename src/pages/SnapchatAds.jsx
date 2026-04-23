@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const SnapchatAds = () => {
   const [formData, setFormData] = useState({
@@ -11,11 +11,29 @@ const SnapchatAds = () => {
   });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasStartedForm, setHasStartedForm] = useState(false);
 
+  // Track funnel events when user starts filling the form
+  const handleFormStart = () => {
+    if (!hasStartedForm) {
+      setHasStartedForm(true);
+      if (window.ttq) {
+        // ClickButton - user started interacting
+        window.ttq.track('ClickButton', {
+          contents: [{ content_name: 'Lead Form' }]
+        });
+        // AddToWishlist - mid-funnel engagement
+        window.ttq.track('AddToWishlist', {
+          contents: [{ content_name: 'Lead Form' }]
+        });
+      }
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    handleFormStart();
   };
 
   const handleSubmit = async (e) => {
@@ -31,12 +49,17 @@ const SnapchatAds = () => {
     }
 
     if (window.ttq) {
+      // SubmitForm event
+      window.ttq.track('SubmitForm', {
+        contents: [{ content_name: 'Lead Form' }]
+      });
+      // CompleteRegistration event
       window.ttq.track('CompleteRegistration', {
-        contents: [
-          {
-            content_name: 'Lead Form'
-          }
-        ]
+        contents: [{ content_name: 'Lead Form' }]
+      });
+      // Contact event for lead gen
+      window.ttq.track('Contact', {
+        contents: [{ content_name: 'Lead Form' }]
       });
     }
 
