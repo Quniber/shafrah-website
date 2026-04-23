@@ -139,14 +139,13 @@ const SnapchatAds = () => {
           {/* Contact Name */}
           <div style={{ marginBottom: '16px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              اسم المسؤول *
+              اسم المسؤول
             </label>
             <input
               type="text"
               name="contactName"
               value={formData.contactName}
               onChange={handleChange}
-              required
               style={inputStyle}
             />
           </div>
@@ -154,14 +153,13 @@ const SnapchatAds = () => {
           {/* Phone */}
           <div style={{ marginBottom: '16px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              رقم الهاتف *
+              رقم الهاتف
             </label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              required
               placeholder="+974"
               dir="ltr"
               style={{...inputStyle, textAlign: 'left'}}
