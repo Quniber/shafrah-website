@@ -31,9 +31,8 @@ const SnapchatAds = () => {
     }
 
     if (window.ttq) {
-      window.ttq.track('SubmitForm', {
-        content_name: 'Lead Form',
-        content_type: 'product'
+      window.ttq.track('CompleteRegistration', {
+        content_name: 'Lead Form'
       });
     }
 
