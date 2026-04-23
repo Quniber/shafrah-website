@@ -20,11 +20,34 @@ const SnapchatAds = () => {
       if (window.ttq) {
         // ClickButton - user started interacting
         window.ttq.track('ClickButton', {
-          contents: [{ content_name: 'Lead Form' }]
+          content_type: 'product',
+          contents: [{
+            content_id: 'lead_form_001',
+            content_name: 'Lead Form',
+            content_category: 'Lead Generation'
+          }]
         });
-        // AddToWishlist - mid-funnel engagement
-        window.ttq.track('AddToWishlist', {
-          contents: [{ content_name: 'Lead Form' }]
+        // AddToCart - mid-funnel engagement
+        window.ttq.track('AddToCart', {
+          content_type: 'product',
+          contents: [{
+            content_id: 'lead_form_001',
+            content_name: 'Lead Form',
+            content_category: 'Lead Generation'
+          }],
+          value: 0,
+          currency: 'QAR'
+        });
+        // InitiateCheckout - user is committed
+        window.ttq.track('InitiateCheckout', {
+          content_type: 'product',
+          contents: [{
+            content_id: 'lead_form_001',
+            content_name: 'Lead Form',
+            content_category: 'Lead Generation'
+          }],
+          value: 0,
+          currency: 'QAR'
         });
       }
     }
@@ -51,15 +74,41 @@ const SnapchatAds = () => {
     if (window.ttq) {
       // SubmitForm event
       window.ttq.track('SubmitForm', {
-        contents: [{ content_name: 'Lead Form' }]
+        content_type: 'product',
+        contents: [{
+          content_id: 'lead_form_001',
+          content_name: 'Lead Form',
+          content_category: 'Lead Generation'
+        }]
       });
       // CompleteRegistration event
       window.ttq.track('CompleteRegistration', {
-        contents: [{ content_name: 'Lead Form' }]
+        content_type: 'product',
+        contents: [{
+          content_id: 'lead_form_001',
+          content_name: 'Lead Form',
+          content_category: 'Lead Generation'
+        }]
       });
       // Contact event for lead gen
       window.ttq.track('Contact', {
-        contents: [{ content_name: 'Lead Form' }]
+        content_type: 'product',
+        contents: [{
+          content_id: 'lead_form_001',
+          content_name: 'Lead Form',
+          content_category: 'Lead Generation'
+        }]
+      });
+      // CompletePayment - final conversion
+      window.ttq.track('CompletePayment', {
+        content_type: 'product',
+        contents: [{
+          content_id: 'lead_form_001',
+          content_name: 'Lead Form',
+          content_category: 'Lead Generation'
+        }],
+        value: 0,
+        currency: 'QAR'
       });
     }
 
