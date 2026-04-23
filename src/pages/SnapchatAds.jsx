@@ -49,17 +49,28 @@ const SnapchatAds = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: formData.contactName,
-          email: formData.email,
-          phone: formData.phone,
-          subject: `[طلب إعلان] ${formData.businessName}`,
-          message: `النشاط التجاري: ${formData.businessName}\nالمسؤول: ${formData.contactName}\nالهاتف: ${formData.phone}\nالبريد: ${formData.email}\nالميزانية: ${formData.budget}\n\nفكرة المشروع:\n${formData.projectIdea}`
+          to: 'info@shafrah.qa',
+          subject: `[طلب مشروع] ${formData.businessName}`,
+          html: `
+            <div dir="rtl" style="font-family: Arial, sans-serif;">
+              <h2>طلب مشروع جديد</h2>
+              <table style="border-collapse: collapse; width: 100%;">
+                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>النشاط التجاري:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.businessName}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>اسم المسؤول:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.contactName}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>الهاتف:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.phone}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>البريد:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.email}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>الميزانية:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.budget}</td></tr>
+              </table>
+              <h3>فكرة المشروع:</h3>
+              <p style="background: #f5f5f5; padding: 15px; border-radius: 5px;">${formData.projectIdea}</p>
+            </div>
+          `
         }),
       });
 
       const data = await response.json();
 
-      if (data.success) {
+      if (data.ok) {
         setStatus({ type: 'success', message: 'تم الإرسال بنجاح! سنتواصل معك قريباً' });
         setFormData({ businessName: '', contactName: '', phone: '', email: '', budget: '', projectIdea: '' });
       } else {
