@@ -101,7 +101,7 @@ const SnapchatAds = () => {
             color: '#111',
             marginBottom: '8px'
           }}>
-            ابدأ حملتك الإعلانية
+            ابدأ مشروعك معنا
           </h1>
           <p style={{ color: '#666', fontSize: '15px' }}>
             املأ النموذج وسنتواصل معك
