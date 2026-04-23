@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const SnapchatAds = () => {
   const [formData, setFormData] = useState({
@@ -12,21 +12,7 @@ const SnapchatAds = () => {
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Snapchat Pixel
-  useEffect(() => {
-    (function(e,t,n){if(e.snaptr)return;var a=e.snaptr=function()
-    {a.handleRequest?a.handleRequest.apply(a,arguments):a.queue.push(arguments)};
-    a.queue=[];var s='script';var r=t.createElement(s);r.async=!0;
-    r.src=n;var u=t.getElementsByTagName(s)[0];
-    u.parentNode.insertBefore(r,u);})(window,document,
-    'https://sc-static.net/scevent.min.js');
-
-    if (window.snaptr) {
-      window.snaptr('init', '69e8c624-efb8-4702-9fc8-b169f353548c', {});
-      window.snaptr('track', 'PAGE_VIEW');
-    }
-  }, []);
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
