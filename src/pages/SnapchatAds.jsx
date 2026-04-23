@@ -12,7 +12,7 @@ const SnapchatAds = () => {
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -36,19 +36,18 @@ const SnapchatAds = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           to: 'info@shafrah.qa',
-          subject: `[طلب مشروع] ${formData.businessName}`,
+          subject: `[طلب مشروع] ${formData.contactName}`,
           html: `
             <div dir="rtl" style="font-family: Arial, sans-serif;">
               <h2>طلب مشروع جديد</h2>
               <table style="border-collapse: collapse; width: 100%;">
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>النشاط التجاري:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.businessName}</td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>اسم المسؤول:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.contactName}</td></tr>
+                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>الاسم:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.contactName}</td></tr>
                 <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>الهاتف:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.phone}</td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>البريد:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.email}</td></tr>
-                <tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>الميزانية:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.budget}</td></tr>
+                ${formData.businessName ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>النشاط التجاري:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.businessName}</td></tr>` : ''}
+                ${formData.email ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>البريد:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.email}</td></tr>` : ''}
+                ${formData.budget ? `<tr><td style="padding: 8px; border: 1px solid #ddd;"><strong>الميزانية:</strong></td><td style="padding: 8px; border: 1px solid #ddd;">${formData.budget}</td></tr>` : ''}
               </table>
-              <h3>فكرة المشروع:</h3>
-              <p style="background: #f5f5f5; padding: 15px; border-radius: 5px;">${formData.projectIdea}</p>
+              ${formData.projectIdea ? `<h3>فكرة المشروع:</h3><p style="background: #f5f5f5; padding: 15px; border-radius: 5px;">${formData.projectIdea}</p>` : ''}
             </div>
           `
         }),
@@ -107,93 +106,91 @@ const SnapchatAds = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit}>
-          {/* Business Name */}
+          {/* Contact Name - Required */}
           <div style={{ marginBottom: '16px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              اسم النشاط التجاري *
-            </label>
-            <input
-              type="text"
-              name="businessName"
-              value={formData.businessName}
-              onChange={handleChange}
-              required
-              style={inputStyle}
-            />
-          </div>
-
-          {/* Contact Name */}
-          <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              اسم المسؤول
+              الاسم *
             </label>
             <input
               type="text"
               name="contactName"
               value={formData.contactName}
               onChange={handleChange}
+              required
               style={inputStyle}
             />
           </div>
 
-          {/* Phone */}
+          {/* Phone - Required */}
           <div style={{ marginBottom: '16px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              رقم الهاتف
+              رقم الهاتف *
             </label>
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              required
               placeholder="+974"
               dir="ltr"
               style={{...inputStyle, textAlign: 'left'}}
             />
           </div>
 
-          {/* Email */}
+          {/* Business Name - Optional */}
           <div style={{ marginBottom: '16px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              البريد الإلكتروني *
+              اسم النشاط التجاري
+            </label>
+            <input
+              type="text"
+              name="businessName"
+              value={formData.businessName}
+              onChange={handleChange}
+              style={inputStyle}
+            />
+          </div>
+
+          {/* Email - Optional */}
+          <div style={{ marginBottom: '16px' }}>
+            <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
+              البريد الإلكتروني
             </label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
               dir="ltr"
               style={{...inputStyle, textAlign: 'left'}}
             />
           </div>
 
-          {/* Budget */}
+          {/* Budget - Optional */}
           <div style={{ marginBottom: '16px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              الميزانية *
+              الميزانية
             </label>
             <input
               type="text"
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              required
               placeholder="مثال: 2000 ر.ق"
               style={inputStyle}
             />
           </div>
 
-          {/* Project Idea */}
+          {/* Project Idea - Optional */}
           <div style={{ marginBottom: '24px' }}>
             <label style={{ display: 'block', fontSize: '14px', fontWeight: '500', color: '#333', marginBottom: '6px' }}>
-              نبذة عن المشروع *
+              نبذة عن المشروع
             </label>
             <textarea
               name="projectIdea"
               value={formData.projectIdea}
               onChange={handleChange}
-              required
               rows={4}
               placeholder="اكتب فكرة عن مشروعك أو الموقع أو التطبيق..."
               style={{...inputStyle, resize: 'none'}}
