@@ -38,7 +38,10 @@ const SnapchatAds = () => {
     setStatus({ type: '', message: '' });
 
     if (window.snaptr) {
-      window.snaptr('track', 'SIGN_UP');
+      window.snaptr('track', 'CUSTOM_EVENT_1', {
+        'user_email': formData.email,
+        'user_phone_number': formData.phone
+      });
     }
 
     try {
