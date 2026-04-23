@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
 
+// SHA-256 hash function for TikTok identify
+const sha256 = async (message) => {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+};
+
 const SnapchatAds = () => {
   const [formData, setFormData] = useState({
     businessName: '',
@@ -20,31 +28,20 @@ const SnapchatAds = () => {
       if (window.ttq) {
         // ClickButton - user started interacting
         window.ttq.track('ClickButton', {
-          content_type: 'product',
           contents: [{
             content_id: 'lead_form_001',
-            content_name: 'Lead Form',
-            content_category: 'Lead Generation'
-          }]
-        });
-        // AddToCart - mid-funnel engagement
-        window.ttq.track('AddToCart', {
-          content_type: 'product',
-          contents: [{
-            content_id: 'lead_form_001',
-            content_name: 'Lead Form',
-            content_category: 'Lead Generation'
+            content_type: 'product',
+            content_name: 'Lead Form'
           }],
           value: 0,
           currency: 'QAR'
         });
-        // InitiateCheckout - user is committed
-        window.ttq.track('InitiateCheckout', {
-          content_type: 'product',
+        // AddToWishlist - mid-funnel engagement
+        window.ttq.track('AddToWishlist', {
           contents: [{
             content_id: 'lead_form_001',
-            content_name: 'Lead Form',
-            content_category: 'Lead Generation'
+            content_type: 'product',
+            content_name: 'Lead Form'
           }],
           value: 0,
           currency: 'QAR'
@@ -72,44 +69,39 @@ const SnapchatAds = () => {
     }
 
     if (window.ttq) {
-      // SubmitForm event
-      window.ttq.track('SubmitForm', {
-        content_type: 'product',
+      // Hash and identify user for better tracking
+      const identifyUser = async () => {
+        const identifyData = {};
+        if (formData.email) {
+          identifyData.email = await sha256(formData.email.toLowerCase().trim());
+        }
+        if (formData.phone) {
+          identifyData.phone_number = await sha256(formData.phone.replace(/\D/g, ''));
+        }
+        if (Object.keys(identifyData).length > 0) {
+          window.ttq.identify(identifyData);
+        }
+      };
+      identifyUser();
+
+      const eventParams = {
         contents: [{
           content_id: 'lead_form_001',
-          content_name: 'Lead Form',
-          content_category: 'Lead Generation'
-        }]
-      });
-      // CompleteRegistration event
-      window.ttq.track('CompleteRegistration', {
-        content_type: 'product',
-        contents: [{
-          content_id: 'lead_form_001',
-          content_name: 'Lead Form',
-          content_category: 'Lead Generation'
-        }]
-      });
-      // Contact event for lead gen
-      window.ttq.track('Contact', {
-        content_type: 'product',
-        contents: [{
-          content_id: 'lead_form_001',
-          content_name: 'Lead Form',
-          content_category: 'Lead Generation'
-        }]
-      });
-      // CompletePayment - final conversion
-      window.ttq.track('CompletePayment', {
-        content_type: 'product',
-        contents: [{
-          content_id: 'lead_form_001',
-          content_name: 'Lead Form',
-          content_category: 'Lead Generation'
+          content_type: 'product',
+          content_name: 'Lead Form'
         }],
         value: 0,
         currency: 'QAR'
-      });
+      };
+
+      // Contact event
+      window.ttq.track('Contact', eventParams);
+      // CompleteRegistration event
+      window.ttq.track('CompleteRegistration', eventParams);
+      // Lead event - important for lead gen campaigns
+      window.ttq.track('Lead', eventParams);
+      // SubmitForm event
+      window.ttq.track('SubmitForm', eventParams);
     }
 
     try {
