@@ -22,7 +22,7 @@ const SnapchatAds = () => {
     'https://sc-static.net/scevent.min.js');
 
     if (window.snaptr) {
-      window.snaptr('init', 'YOUR_PIXEL_ID');
+      window.snaptr('init', '69e8c624-efb8-4702-9fc8-b169f353548c', {});
       window.snaptr('track', 'PAGE_VIEW');
     }
   }, []);
