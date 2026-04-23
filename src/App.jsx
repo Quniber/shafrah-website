@@ -12,6 +12,7 @@ import Start from './pages/EidOffer';
 import RefundPolicy from './pages/RefundPolicy';
 import Terms from './pages/Terms';
 import NotFound from './pages/NotFound';
+import SnapchatAds from './pages/SnapchatAds';
 import './i18n';
 
 function ScrollToTop() {
@@ -26,21 +27,29 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/start" element={<Start />} />
-          <Route path="/refund-policy" element={<RefundPolicy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        {/* Standalone page without Layout */}
+        <Route path="/f8x2k9" element={<SnapchatAds />} />
+
+        {/* Pages with Layout */}
+        <Route path="/*" element={
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/start" element={<Start />} />
+              <Route path="/refund-policy" element={<RefundPolicy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Layout>
+        } />
+      </Routes>
     </Router>
   );
 }
