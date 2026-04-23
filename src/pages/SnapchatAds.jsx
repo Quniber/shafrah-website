@@ -30,6 +30,13 @@ const SnapchatAds = () => {
       });
     }
 
+    if (window.ttq) {
+      window.ttq.track('SubmitForm', {
+        content_name: 'Lead Form',
+        content_type: 'product'
+      });
+    }
+
     try {
       const response = await fetch('https://email-api.shafrah.qa/send', {
         method: 'POST',
